@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="354z78zZeZY" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/6/63/The_Fate_of_the_Furious_Poster.jpg" width="220" height="342">
+    <h2>速度与激情8</h2>
+    <p align="left">导演：F·加里·格雷</p>
+    <p align="left">主要角色：多米尼克（范·迪塞尔 Vin Diesel 饰）、莱蒂（米歇尔·罗德里格兹 Michelle Rodriguez 饰）</p>
+    <p align="left">剧情简介：飞车家族面临前所未有的考验</p>
+    <p align="left">上映日期：2017/4/14</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="z86aFALzjgs" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/7/79/HarryPotterAndThePhilosophersStoneMoviePoster.jpg" width="220" height="342">
+    <h2>哈利波特与魔法石</h2>
+    <p align="left">导演：克里斯·哥伦布</p>
+    <p align="left">主要角色：哈利波特（丹尼尔·雷德克里夫 Daniel Radcliffe饰）、赫敏（艾玛·沃森 Emma Watson饰）</p>
+    <p align="left">剧情简介：魔法少年的学习之路</p>
+    <p align="left">上映日期：2002/1/26</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="DahX5iEJ1CI" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/5/51/Iron_man_3_poster_250.jpg" width="220" height="342">
+    <h2>钢铁侠3</h2>
+    <p align="left">导演：沙恩·布莱克</p>
+    <p align="left">主要角色：托尼·斯塔克（小罗伯特·唐尼 Robert Downey Jr. 饰）、佩珀·波茨（格温妮斯·帕特洛 Gwyneth Paltrow 饰）</p>
+    <p align="left">剧情简介：超级富翁拯救世界之旅</p>
+    <p align="left">上映日期：2013/5/1</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SeubYXtDGlE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/b/b5/Wolf_Warriors_2_poster.jpeg" width="220" height="342">
+    <h2>战狼2</h2>
+    <p align="left">导演：吴京</p>
+    <p align="left">主要角色：冷锋（吴京 饰）、Rachel（卢靖姗 饰）、Big Daddy（弗兰克·格里罗 饰）</p>
+    <p align="left">剧情简介：中国超级战士非洲扬我国威</p>
+    <p align="left">上映日期：2017/7/27</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="VZAPW4fBse0" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/6/6e/Amazing_spiderman_two_ver11.jpg" width="220" height="342">
+    <h2>超凡蜘蛛侠2</h2>
+    <p align="left">导演：马克·韦布</p>
+    <p align="left">主要角色：彼得·帕克（安德鲁·加菲尔德 Andrew Garfield 饰）、格温·斯坦西（艾玛·斯通 Emma Stone 饰）</p>
+    <p align="left">剧情简介：蜘蛛人彼得帕克依然很忙</p>
+    <p align="left">上映日期：2014/5/4</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="OndmjW9nag8" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/zh/b/bf/Transformers_dark_of_the_moon_ver5.jpg" width="220" height="342">
+    <h2>变形金刚3</h2>
+    <p align="left">导演：迈克尔·贝</p>
+    <p align="left">主要角色：山姆（希亚·拉博夫 Shia LaBeouf 饰）、卡莉（罗茜·汉丁顿-惠特莉Rosie Huntington-Whiteley 饰）</p>
+    <p align="left">剧情简介：超级炫酷汽车人大战</p>
+    <p align="left">上映日期：2011/7/21</p>
+</div>
+
+    </div>
+  </body>
+</html>
